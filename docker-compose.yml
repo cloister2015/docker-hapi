@@ -1,0 +1,17 @@
+hapi:
+  build: .
+  ports:
+    - "9000:9000"
+  volumes:
+    - .:/usr/src/app
+  links:
+    - mysql
+    - redis
+
+mysql:
+  build: ./mysql/
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+
+redis:
+  image: redis
